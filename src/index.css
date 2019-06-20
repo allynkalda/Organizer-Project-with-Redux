@@ -10,7 +10,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   min-height: 100%;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -34,4 +33,8 @@ textarea.materialize-textarea:focus:not([readonly]) + label,
 input[type=email]:not(.browser-default):focus:not([readonly]) + label,
 input[type=password]:not(.browser-default):focus:not([readonly]) + label{
   color: #ec407a !important;
+}
+.news-images {
+  height: 100px;
+  width: auto;
 }
