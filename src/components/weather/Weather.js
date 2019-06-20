@@ -1,44 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useFetch } from "../../hooks/hooks";
 
-const location = {
-    lat: null,
-    lon: null
-}
-
-const getLocation = () => {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-      }
-}
-
-const showPosition = (position) => {
-    location.lat = position.coords.latitude;
-    location.lon = position.coords.longitude;
-}
 
 export default function Weather() {
-    getLocation();
-    
-    const [loc] = useState(location)
 
-    const [data, loading] = useFetch('api.openweathermap.org/data/2.5/weather?lat=41.4151242&lon=2.1785265&APPID=8e6150cf719d58fc8062d507eaba92c0')
-    //     'api.openweathermap.org/data/2.5/weather?lat=' +
-    //     `${data.lat}` +
-    //     '&lon=' +
-    //     `${data.lon}` +
-    //     '&APPID=8e6150cf719d58fc8062d507eaba92c0'
-    // )
+    const [location, setLocation] = useState([])
 
-    console.log('api.openweathermap.org/data/2.5/weather?lat=' +
-    `${loc.lat}` +
-    '&lon=' +
-    `${loc.lon}`)
+    const getCoords = () => {
+        if (window.navigator.geolocation) { 
+            navigator.geolocation.getCurrentPosition((position) => {
+                setLocation([position.coords.latitude, position.coords.longitude])
+            })
+        }
+    }
+
+    getCoords();
+
+    const url = 'http://api.openweathermap.org/data/2.5/weather?lat=' + 
+        location[0] + '&lon=' + 
+        location[1] + '&APPID=8e6150cf719d58fc8062d507eaba92c0'
+
+    const [data, loading] = useFetch(url);
+
+    console.log(data.wind.speed)
+
 
     return (
         <div>
             <h3>Weather today</h3>
-
+            {/* { loading ('Loading..') : (
+            <div>
+                
+               <p>{data.name}</p>
+               <p>{data.cod}</p>
+               <p>{data.main.temp}</p>
+            </div> )
+            }
+            {} */}
         </div>
     )
 }
