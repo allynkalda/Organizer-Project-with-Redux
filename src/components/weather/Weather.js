@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useFetch } from "../../hooks/hooks";
 
 
@@ -20,23 +20,22 @@ export default function Weather() {
         location[0] + '&lon=' + 
         location[1] + '&APPID=8e6150cf719d58fc8062d507eaba92c0'
 
-    const [data, loading] = useFetch(url);
+    const [ data, loading ] = useFetch(url);
 
-    console.log(data.wind.speed)
-
+   // console.log(data.main.temp) // returns undefined
+   console.log(data) // logs name
 
     return (
         <div>
             <h3>Weather today</h3>
-            {/* { loading ('Loading..') : (
-            <div>
-                
-               <p>{data.name}</p>
-               <p>{data.cod}</p>
-               <p>{data.main.temp}</p>
-            </div> )
+            { !data || !data.main || loading ? ('Loading..') : (
+                <div>
+                <img src={`http://openweathermap.org/img/w/${data.weather[0].icon}.png`}/>
+                <p>{data.weather[0].description}</p>
+                <p>{data.name}</p>
+                <p>{data.main.temp}</p>
+                </div> )
             }
-            {} */}
         </div>
     )
 }

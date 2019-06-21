@@ -7,6 +7,7 @@ import CreateProject from './components/project/CreateProject';
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
 import NewsList from './components/news/NewsList'
+import Weather from './components/weather/Weather';
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
             <Route path='/signup' component={SignUp} />
             <Route path='/create' component={CreateProject} />
             <Route path='/day' component={NewsList} />
+            <Route path='/weather' component={Weather} />
           </Switch>
         </div>
       </BrowserRouter>

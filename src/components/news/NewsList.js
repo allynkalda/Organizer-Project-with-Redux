@@ -11,7 +11,6 @@ function NewsList() {
   const [data, loading] = useFetch(url);
   return (
     <>
-      <Weather />
       <h1>News</h1>
       {loading ? (
         "Loading..."
