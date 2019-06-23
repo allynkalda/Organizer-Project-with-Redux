@@ -6,8 +6,7 @@ import ProjectDetails from './components/project/ProjectDetails';
 import CreateProject from './components/project/CreateProject';
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
-import NewsList from './components/news/NewsList'
-import Weather from './components/weather/Weather';
+import Today from './components/layout/Today';
 
 class App extends Component {
   render() {
@@ -21,8 +20,7 @@ class App extends Component {
             <Route path='/signin' component={SignIn} />
             <Route path='/signup' component={SignUp} />
             <Route path='/create' component={CreateProject} />
-            <Route path='/day' component={NewsList} />
-            <Route path='/weather' component={Weather} />
+            <Route path='/today' component={Today} />
           </Switch>
         </div>
       </BrowserRouter>

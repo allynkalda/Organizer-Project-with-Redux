@@ -1,6 +1,12 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Daily Organizer App
+
+This daily organizer app has a landing page that shows the user the weather of their current location and the top ten news from BBC using OpenWeatherMap API and News API.
+
+The user can also add new projects that are seen by all the users that are logged in and there is a notification bar to show if there had been any new projects posted by any user.
+
+## How to start
 
 In the project directory, you can run:
 
