@@ -7,6 +7,8 @@ import CreateProject from './components/project/CreateProject';
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
 import Today from './components/layout/Today';
+import TodoList from './components/todo/TodoList';
+import TodoInput from './components/todo/TodoInput';
 
 class App extends Component {
   render() {
@@ -21,6 +23,8 @@ class App extends Component {
             <Route path='/signup' component={SignUp} />
             <Route path='/create' component={CreateProject} />
             <Route path='/today' component={Today} />
+            <Route path='/todo' component={TodoList} />
+            <Route path='/newtodo' component={TodoInput} />
           </Switch>
         </div>
       </BrowserRouter>

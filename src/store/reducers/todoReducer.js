@@ -1,0 +1,21 @@
+const initState = {
+    todo: []
+}
+
+const todoReducer = (state = initState, action) => {
+    switch (action.type) {
+        case 'CREATE_TODO_SUCCESS':
+            console.log('create new todo success')
+            return {
+                ...state,
+                todo: action.data,
+            }
+        case 'CREATE_TODO_ERROR':
+            console.log('create todo error');
+            return state;
+        default:
+            return state;
+    }
+}
+
+export default todoReducer;
