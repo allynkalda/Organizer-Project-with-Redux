@@ -21,6 +21,13 @@ The user:
 
 - can sign in, sign out, and sign up through Firebase authentication. 
 - can check the weather and temperature based on their geolocation.
-- can create a project and post it on the message board.
-- can delete a project.
+- can create a shared project and post it on the message board.
+- can delete a shared project.
+- can create their personal to-do list.
+- can delete their personal to-do items.
+
+## Backlog
+
+- Notification of deleted items and comments
+- Comments section in project details
 

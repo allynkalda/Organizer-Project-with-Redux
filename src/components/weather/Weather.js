@@ -18,7 +18,7 @@ export default function Weather() {
 
     const url = 'http://api.openweathermap.org/data/2.5/weather?lat=' + 
         location[0] + '&lon=' + 
-        location[1] + '&APPID=8e6150cf719d58fc8062d507eaba92c0'
+        location[1] + '&APPID=8e6150cf719d58fc8062d507eaba92c0&units=metric'
 
     const [ data, loading ] = useFetch(url);
 
@@ -33,7 +33,7 @@ export default function Weather() {
                 <img src={`http://openweathermap.org/img/w/${data.weather[0].icon}.png`}/>
                 <p>{data.weather[0].description}</p>
                 <p>{data.name}</p>
-                <p>{data.main.temp}</p>
+                <p>{Math.round(data.main.temp)}°</p>
                 </div> )
             }
         </div>

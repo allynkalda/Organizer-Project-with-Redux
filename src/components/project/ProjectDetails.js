@@ -16,12 +16,13 @@ const ProjectDetails = (props) => {
                 <div className="card-content">
                     <span className="card-title">{project.title}</span>
                     <p>{project.content}</p>
+                    <button onClick={(e) => dispatchDeleteProject(e, props.id)}>Delete</button>
                 </div>
                 <div className="card-action grey lighten-4 grey-text">
                     <div>Posted by {project.authorFirstName} {project.authorLastName}</div>
                     <div><p>{moment(project.createdAt.toDate().toString()).calendar()}</p></div>
                 </div>
-                <button onClick={(e) => dispatchDeleteProject(e, props.id)}>Delete</button>
+
             </div>
         </div>
         )
@@ -50,7 +51,7 @@ const matchDispatchToProps = (dispatch, props) => {
         dispatchDeleteProject: (e, id) => {
             e.preventDefault()
             dispatch(deleteProject(id))
-            this.props.history.push('/')
+            props.history.push('/')
         }
     }
 }
