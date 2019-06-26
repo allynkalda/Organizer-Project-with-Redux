@@ -8,7 +8,7 @@ const todoReducer = (state = initState, action) => {
             console.log('create new todo success')
             return {
                 ...state,
-                todo: action.data,
+                todo: [action.todo, ...state.todo]
             }
         case 'CREATE_TODO_ERROR':
             console.log('create todo error');

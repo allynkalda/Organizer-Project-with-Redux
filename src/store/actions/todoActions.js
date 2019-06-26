@@ -7,7 +7,7 @@ export const createTodo = (todo) => {
             authorId: authorId,
             createdAt: new Date()
         }).then(() => {
-            dispatch({ type: 'CREATE_TODO_SUCCESS' })
+            dispatch({ type: 'CREATE_TODO_SUCCESS', todo })
         }).catch(err => {
             dispatch({ type: 'CREATE_TODO_ERROR' })
         })
