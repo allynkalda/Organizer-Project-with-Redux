@@ -5,9 +5,11 @@ import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
 import moment from 'moment'
 import { deleteProject } from '../../store/actions/projectActions'
+import CommentInput from './CommentInput';
 
 const ProjectDetails = (props) => {
     const { auth, project, dispatchDeleteProject } = props;
+    console.log(props)
     if (!auth.uid) return <Redirect to='/signin' />
     if (project) {
         return (
@@ -16,13 +18,14 @@ const ProjectDetails = (props) => {
                 <div className="card-content">
                     <span className="card-title">{project.title}</span>
                     <p>{project.content}</p>
-                    <button onClick={(e) => dispatchDeleteProject(e, props.id)}>Delete</button>
+                    <button className="btn pink lighten-1 z-depth-0" 
+                        onClick={(e) => dispatchDeleteProject(e, props.id)}>Delete</button>
                 </div>
                 <div className="card-action grey lighten-4 grey-text">
                     <div>Posted by {project.authorFirstName} {project.authorLastName}</div>
                     <div><p>{moment(project.createdAt.toDate().toString()).calendar()}</p></div>
                 </div>
-
+                <CommentInput id={props.id} />
             </div>
         </div>
         )

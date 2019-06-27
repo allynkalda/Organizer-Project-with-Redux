@@ -13,13 +13,19 @@ class TodoList extends Component {
         if (!auth.uid) return <Redirect to='/signin' />
 
         if (!todo) return <p>You have no items in your to-do list.</p>
-        
+
         return (
             <div>
                 <h5 className="grey-text text-darken-3">My To-Do List</h5>
                 <div className="container">
                     {
-                        !todo ? "Loading" : todo.map( todo => <p>{todo.title}</p>)
+                        !todo ? "Loading" : todo.map( todo => { return (
+                            <div>
+                            <p>{todo.title}</p>
+                            <p>{todo.content}</p>
+                            </div>
+                            )
+                        }) 
                     }
                 </div>
                 <div className="container">

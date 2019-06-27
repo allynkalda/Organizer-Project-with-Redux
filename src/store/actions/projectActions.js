@@ -4,12 +4,11 @@ export const createProject = (project) => {
     const firestore = getFirestore();
     const profile = getState().firebase.profile;
     const authorId = getState().firebase.auth.uid;
-    firestore.collection('project').add({
+    firestore.collection('projects').add({
       ...project,
       authorFirstName: profile.firstName,
       authorLastName: profile.lastName,
       authorId: authorId,
-      comments: [],
       createdAt: new Date()
     }).then(() => {
       dispatch({ type: 'CREATE_PROJECT_SUCCESS' });
@@ -29,6 +28,24 @@ export const deleteProject = (id) => {
         dispatch({ type: 'DELETE_PROJECT_SUCCESS' });
       }).catch(err => {
         dispatch({ type: 'DELETE_PROJECT_ERROR' });
+      })
+  }
+}
+
+export const addComment = (comment, id) => {
+  console.log("dispatch", comment, id)
+  return(dispatch, getState, {getFirestore}) => {
+    const firestore = getFirestore();
+    const profile = getState().firebase.profile;
+    const authorId = getState().firebase.auth.uid;
+    firestore.collection('projects').doc(id).collection('comments').add({
+      comment,
+      authorFirstName: profile.firstName,
+      authorLastName: profile.lastName,
+      authorId: authorId,
+      createdAt: new Date()
+      }).then(() => {
+        console.log('comment added')
       })
   }
 }
