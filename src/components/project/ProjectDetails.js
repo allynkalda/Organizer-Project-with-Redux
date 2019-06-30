@@ -6,6 +6,7 @@ import { Redirect } from 'react-router-dom'
 import moment from 'moment'
 import { deleteProject } from '../../store/actions/projectActions'
 import CommentInput from './CommentInput';
+import CommentsList from './CommentsList'
 
 const ProjectDetails = (props) => {
     const { auth, project, dispatchDeleteProject } = props;
@@ -23,9 +24,12 @@ const ProjectDetails = (props) => {
                 </div>
                 <div className="card-action grey lighten-4 grey-text">
                     <div>Posted by {project.authorFirstName} {project.authorLastName}</div>
-                    {/* <div><p>{moment(project.createdAt.toDate().toString()).calendar()}</p></div> */}
+                    <div><p>{ project.createdAt ? 
+                              moment(project.createdAt.toDate().toString()).calendar() :
+                              null }</p></div>
                 </div>
                 <CommentInput id={props.id} />
+                <CommentsList comments={project.comments} />
             </div>
         </div>
         )
@@ -42,9 +46,11 @@ const ProjectDetails = (props) => {
 const mapStateToProps = (state, ownProps) => {
     const id = ownProps.match.params.id;
     const projects = state.firestore.data.projects;
+    // const comments = state.firestore.data.projects.comments;
     const project = projects ? projects[id] : null
     return {
         project: project,
+        // comments: comments,
         id: id,
         auth: state.firebase.auth
     }
