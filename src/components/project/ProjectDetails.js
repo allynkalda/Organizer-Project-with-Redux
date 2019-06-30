@@ -23,7 +23,7 @@ const ProjectDetails = (props) => {
                 </div>
                 <div className="card-action grey lighten-4 grey-text">
                     <div>Posted by {project.authorFirstName} {project.authorLastName}</div>
-                    <div><p>{moment(project.createdAt.toDate().toString()).calendar()}</p></div>
+                    {/* <div><p>{moment(project.createdAt.toDate().toString()).calendar()}</p></div> */}
                 </div>
                 <CommentInput id={props.id} />
             </div>
@@ -61,7 +61,11 @@ const matchDispatchToProps = (dispatch, props) => {
 
 export default compose(
     connect(mapStateToProps, matchDispatchToProps),
-    firestoreConnect([
-        { collection: 'projects' }
-    ])
+    firestoreConnect(props => {
+        return [
+            { collection: 'projects',
+              doc: props.id,
+              subcollections: [{ collection: "comments" }] }
+        ]
+    })
 )(ProjectDetails)
