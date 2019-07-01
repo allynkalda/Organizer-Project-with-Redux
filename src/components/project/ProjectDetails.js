@@ -29,7 +29,7 @@ const ProjectDetails = (props) => {
                               null }</p></div>
                 </div>
                 <CommentInput id={props.id} />
-                <CommentsList comments={project.comments} />
+                <CommentsList id={props.id}/>
             </div>
         </div>
         )
@@ -45,12 +45,14 @@ const ProjectDetails = (props) => {
 
 const mapStateToProps = (state, ownProps) => {
     const id = ownProps.match.params.id;
+    console.log(state.firestore)
     const projects = state.firestore.data.projects;
-    // const comments = state.firestore.data.projects.comments;
     const project = projects ? projects[id] : null
+    const comments = state.firestore.ordered.projects
+    // const comment = comments ? projects[0].comments :
     return {
         project: project,
-        // comments: comments,
+        comments: comments,
         id: id,
         auth: state.firebase.auth
     }
@@ -69,9 +71,7 @@ export default compose(
     connect(mapStateToProps, matchDispatchToProps),
     firestoreConnect(props => {
         return [
-            { collection: 'projects',
-              doc: props.id,
-              subcollections: [{ collection: "comments" }] }
+            { collection: 'projects' }
         ]
     })
 )(ProjectDetails)

@@ -16,6 +16,7 @@ class TodoList extends Component {
 
         return (
             <div>
+                {console.log(todo)}
                 <h5 className="grey-text text-darken-3">My To-Do List</h5>
                 <div className="container">
                     {

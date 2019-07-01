@@ -32,14 +32,14 @@ export const deleteProject = (id) => {
   }
 }
 
-export const addComment = (comment, id) => {
+export const addComment = ({comment}, id) => {
   console.log("dispatch", comment, id)
   return(dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
     const profile = getState().firebase.profile;
     const authorId = getState().firebase.auth.uid;
     firestore.collection('projects').doc(id).collection('comments').add({
-      comment,
+      comment: comment,
       authorFirstName: profile.firstName,
       authorLastName: profile.lastName,
       authorId: authorId,
