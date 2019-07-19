@@ -22,11 +22,8 @@ export default function Weather() {
 
     const [ data, loading ] = useFetch(url);
 
-   // console.log(data.main.temp) // returns undefined
-   console.log(data) // logs name
-
     return (
-        <div>
+        <div className="container center-align">
             <h3>Weather today</h3>
             { !data || !data.main || loading ? ('Loading..') : (
                 <div>

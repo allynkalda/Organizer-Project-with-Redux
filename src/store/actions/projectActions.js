@@ -46,6 +46,9 @@ export const addComment = ({comment}, id) => {
       createdAt: new Date()
       }).then(() => {
         console.log('comment added')
+        dispatch({ type: 'COMMENT_SUCCESS', comment}) 
+      }).catch(err => {
+        dispatch({ type: 'COMMENT_DELETE', err })
       })
   }
 }

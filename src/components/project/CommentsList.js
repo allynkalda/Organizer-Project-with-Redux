@@ -6,13 +6,11 @@ import { compose } from 'redux'
 const CommentsList = ({ comments }) => {
     return (
         <div>
-            {console.log(comments)}
             { !comments ? "Loading..." : comments.map(elem => {
                 return (
                     <div key={elem.id}>
                         <p>{elem.comment}</p>
                         <p>Posted by {elem.authorFirstName}</p>
-
                     </div>
                 )
             }) }
@@ -21,9 +19,11 @@ const CommentsList = ({ comments }) => {
 }
 
 const mapStateToProps = (state) => {
+    console.log(state)
     const comments = state.firestore.ordered.projects
+   // const newComments = state.projects.comments[0]
     return {
-        comments: comments,
+        comments: comments, 
     }
 }
 
