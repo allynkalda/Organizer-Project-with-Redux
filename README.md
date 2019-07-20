@@ -8,12 +8,12 @@ The user can also add new projects that are seen by all the users that are logge
 
 ## Tech Stack
 
-React
-Redux and Hooks
-OpenWeatherMap API
-News API
-Materialize CSS
-Firebase
+- React
+- Redux and Hooks
+- OpenWeatherMap API
+- News API
+- Materialize CSS
+- Firebase
 
 ## User Journey
 
