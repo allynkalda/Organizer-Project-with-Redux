@@ -15,12 +15,14 @@ const ProjectDetails = (props) => {
     if (project) {
         return (
         <div className="container section project-details">
-            <div className="card z-depth-0">
+            <div className="card z-depth-1">
                 <div className="card-content">
                     <span className="card-title">{project.title}</span>
                     <p>{project.content}</p>
-                    <button className="btn pink lighten-1 z-depth-0" 
-                        onClick={(e) => dispatchDeleteProject(e, props.id)}>Delete</button>
+                    <button className="btn-floating halfway-fab waves-effect waves-light pink"
+                        onClick={(e) => dispatchDeleteProject(e, props.id)}>
+                    <i class="material-icons">delete</i>
+                    </button>
                 </div>
                 <div className="card-action grey lighten-4 grey-text">
                     <div>Posted by {project.authorFirstName} {project.authorLastName}</div>
@@ -28,9 +30,9 @@ const ProjectDetails = (props) => {
                               moment(project.createdAt.toDate().toString()).calendar() :
                               null }</p></div>
                 </div>
+                </div>
                 <CommentInput id={props.id} />
                 <CommentsList id={props.id}/>
-            </div>
         </div>
         )
     } else {

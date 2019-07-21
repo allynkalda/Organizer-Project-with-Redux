@@ -13,3 +13,17 @@ export const createTodo = (todo) => {
         })
     }
 }
+
+export const deleteToDo = (id) => {
+    console.log("dispatch", id)
+    return(dispatch, getState, {getFirestore}) => {
+      const firestore = getFirestore();
+      firestore.collection('todo').doc(id).delete()
+        .then(() => {
+          console.log('deleted')
+          dispatch({ type: 'DELETE_TODO_SUCCESS' });
+        }).catch(err => {
+          dispatch({ type: 'DELETE_TODO_ERROR' });
+        })
+    }
+  }
