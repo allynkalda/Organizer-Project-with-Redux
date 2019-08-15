@@ -33,9 +33,10 @@ class TodoList extends Component {
                                      moment(todo.createdAt.toDate().toString()).calendar(): 
                                      null }</p></em>
                                 <p>{todo.content}</p>
-                                <a className="btn-floating halfway-fab waves-effect waves-light pink">
+                                <button onClick={(e) => dispatchDeleteToDo(e, todo.id)}
+                                    className="btn-floating halfway-fab waves-effect waves-light pink">
                                     <i className="material-icons">delete</i>
-                                    <button onClick={(e) => dispatchDeleteToDo(e, todo.id)}></button></a>
+                                    </button>
                             </div>
                             </div>
                             </div>
@@ -61,7 +62,7 @@ const matchDispatchToProps = (dispatch, props) => {
         dispatchDeleteToDo: (e, id) => {
             e.preventDefault()
             dispatch(deleteToDo(id))
-            props.history.push('/')
+            props.history.push('/todo')
         }
     }
 }

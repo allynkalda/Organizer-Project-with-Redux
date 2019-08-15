@@ -18,12 +18,12 @@ class App extends Component {
         <div className="App">
           <Navbar />
           <Switch>
-            <Route exact path='/'component={Dashboard} />
+            <Route exact path='/'component={Today} />
             <Route path='/project/:id' component={ProjectDetails} />
             <Route path='/signin' component={SignIn} />
             <Route path='/signup' component={SignUp} />
             <Route path='/create' component={CreateProject} />
-            <Route path='/today' component={Today} />
+            <Route path='/project' component={Dashboard} />
             <Route path='/todo' component={TodoList} />
             <Route path='/newtodo' component={TodoInput} />
             <Route path='/profile' component={ShowProfile} />

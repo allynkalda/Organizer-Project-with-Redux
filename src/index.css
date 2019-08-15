@@ -37,3 +37,9 @@ input[type=password]:not(.browser-default):focus:not([readonly]) + label{
 .photo-size {
   width: 120px;
 }
+.create-button {
+  padding: 50px 20px 0px 20px;
+}
+.projects-container {
+  padding-top: 20px;
+}

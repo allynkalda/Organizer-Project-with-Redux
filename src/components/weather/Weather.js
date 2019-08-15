@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useFetch } from "../../hooks/hooks";
-
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"; 
+import Loader from 'react-loader-spinner'
 
 export default function Weather() {
 
@@ -25,7 +26,15 @@ export default function Weather() {
     return (
         <div className="container center-align">
             <h3>Weather today</h3>
-            { !data || !data.main || loading ? ('Loading..') : (
+            { !data || !data.main || loading ? 
+            (
+                <Loader
+                    type="Puff"
+                    color="#00BFFF"
+                    height="100"
+                    width="100"
+                />
+            ) : (
                 <div>
                 <img src={`http://openweathermap.org/img/w/${data.weather[0].icon}.png`}/>
                 <p>{data.weather[0].description}</p>
